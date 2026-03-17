@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AJ's Tree Service – Small Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Nunito',sans-serif;background:#fdfaf5;color:#2c2016;line-height:1.65;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+
+:root{
+  --brown:     #5c3d1e;
+  --brown-mid: #7a5230;
+  --brown-lt:  #a67c52;
+  --cream:     #fdfaf5;
+  --cream2:    #f5f0e8;
+  --cream3:    #ede6d8;
+  --green:     #2e6b2e;
+  --green-mid: #3d8a3d;
+  --green-lt:  #d4edd4;
+  --red:       #b8291a;
+  --red-lt:    #f0e8e6;
+  --gold:      #c8820a;
+  --gold-lt:   #fff3d9;
+  --text:      #2c2016;
+  --text-mid:  #5a4020;
+  --text-lt:   #8a6a40;
+  --border:    #e0d4c0;
+  --shadow-sm: 0 2px 12px rgba(92,61,30,0.08);
+  --shadow-md: 0 6px 28px rgba(92,61,30,0.12);
+}
+
+.container{max-width:1140px;margin:0 auto;padding:0 28px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 30px;border-radius:50px;
+  font-family:'Nunito',sans-serif;font-size:0.9rem;font-weight:800;
+  cursor:pointer;border:none;transition:all 0.2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 4px 16px rgba(184,41,26,0.3)}
+.btn-red:hover{background:#9a2015;box-shadow:0 6px 22px rgba(184,41,26,0.4)}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 4px 16px rgba(46,107,46,0.3)}
+.btn-green:hover{background:#245424;box-shadow:0 6px 22px rgba(46,107,46,0.4)}
+.btn-outline{background:transparent;border:2.5px solid var(--brown);color:var(--brown)}
+.btn-outline:hover{background:var(--brown);color:#fff}
+.section-label{
+  display:inline-block;
+  font-size:0.75rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--green);margin-bottom:12px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,4.5vw,3rem);
+  font-weight:900;color:var(--brown);line-height:1.15;
+}
+.section-sub{font-size:0.95rem;color:var(--text-lt);margin-top:12px;line-height:1.75;max-width:520px}
+
+/* TOP RIBBON */
+.ribbon{
+  background:var(--brown);color:#fff;
+  padding:9px 0;font-size:0.8rem;font-weight:700;
+}
+.ribbon .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.ribbon-badges{display:flex;gap:22px}
+.ribbon-badge{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.9)}
+.ribbon a{color:var(--gold);font-weight:800}
+
+/* HEADER */
+.site-header{
+  background:var(--cream);
+  border-bottom:2px solid var(--border);
+  position:sticky;top:0;z-index:100;
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 28px;max-width:1140px;margin:0 auto;
+}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-emblem{
+  width:54px;height:54px;
+  border-radius:50%;
+  border:3px solid var(--red);
+  background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-emblem svg{color:#fff}
+.logo-words .name{
+  font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;
+  color:var(--red);line-height:1.1;
+}
+.logo-words .sub{
+  font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--brown-lt);margin-top:1px;
+}
+.site-nav{display:flex;align-items:center;gap:4px}
+.site-nav a{
+  font-size:0.88rem;font-weight:700;color:var(--text-mid);
+  padding:8px 14px;border-radius:50px;transition:all 0.2s;
+}
+.site-nav a:hover{background:var(--green-lt);color:var(--green)}
+.site-nav .cta{background:var(--red);color:#fff;box-shadow:0 3px 12px rgba(184,41,26,0.25)}
+.site-nav .cta:hover{background:#9a2015;color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--brown);border-radius:2px}
+.mobile-nav{display:none;flex-direction:column;background:var(--cream);border-top:2px solid var(--border);padding:16px 28px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:1rem;font-weight:700;color:var(--text-mid);padding:12px 0;border-bottom:1px solid var(--border)}
+.mobile-nav a:last-child{border-bottom:none;color:var(--red)}
+
+/* HERO */
+.hero{
+  background:var(--cream2);
+  padding:70px 0 80px;
+  position:relative;overflow:hidden;
+}
+.hero-bg-shape{
+  position:absolute;right:-80px;top:-60px;
+  width:620px;height:620px;border-radius:50%;
+  background:var(--green-lt);opacity:0.6;
+  z-index:0;
+}
+.hero-bg-shape2{
+  position:absolute;right:140px;bottom:-100px;
+  width:320px;height:320px;border-radius:50%;
+  background:var(--cream3);
+  z-index:0;
+}
+.hero-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:center;position:relative;z-index:1;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold-lt);border:2px solid var(--gold);
+  color:var(--gold);border-radius:50px;padding:6px 16px;
+  font-size:0.75rem;font-weight:800;letter-spacing:0.08em;
+  text-transform:uppercase;margin-bottom:22px;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5.5vw,3.8rem);
+  font-weight:900;color:var(--brown);
+  line-height:1.1;margin-bottom:20px;
+}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero-desc{font-size:1rem;color:var(--text-lt);max-width:440px;margin-bottom:36px;line-height:1.8}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
+.hero-trust-row{
+  display:flex;gap:20px;flex-wrap:wrap;
+  padding-top:28px;border-top:2px dashed var(--border);
+}
+.trust-pill{
+  display:flex;align-items:center;gap:8px;
+  background:var(--cream);border:1.5px solid var(--border);
+  border-radius:50px;padding:7px 14px;
+  font-size:0.78rem;font-weight:700;color:var(--text-mid);
+}
+.trust-pill .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.hero-visual{position:relative}
+.hero-img-box{
+  border-radius:20px;
+  background:linear-gradient(135deg,var(--green) 0%,#3d8a3d 60%,#6ab06a 100%);
+  aspect-ratio:4/5;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow-md);
+  overflow:hidden;
+  position:relative;
+}
+.hero-img-label{font-size:0.8rem;color:rgba(255,255,255,0.6);text-align:center;text-transform:uppercase;letter-spacing:0.1em}
+.hero-floating-card{
+  position:absolute;bottom:-20px;left:-30px;
+  background:#fff;border-radius:16px;
+  padding:16px 20px;box-shadow:var(--shadow-md);
+  border:1.5px solid var(--border);
+}
+.hfc-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--green);line-height:1}
+.hfc-label{font-size:0.75rem;font-weight:700;color:var(--text-lt);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px}
+.hero-floating-card2{
+  position:absolute;top:24px;right:-24px;
+  background:#fff;border-radius:16px;
+  padding:14px 18px;box-shadow:var(--shadow-md);
+  border:1.5px solid var(--border);text-align:center;
+}
+.hfc2-stars{color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:4px}
+.hfc2-label{font-size:0.72rem;font-weight:800;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.06em}
+
+/* SERVICES */
+.services{padding:100px 0;background:var(--cream)}
+.services-header{text-align:center;margin-bottom:60px}
+.services-header .section-sub{margin:12px auto 0}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.svc-card{
+  background:#fff;border-radius:20px;
+  border:2px solid var(--border);
+  padding:32px 28px;
+  transition:all 0.25s;
+  position:relative;overflow:hidden;
+}
+.svc-card:hover{border-color:var(--green);box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.svc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--green);transform:scaleX(0);transition:transform 0.25s;transform-origin:left;
+}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-icon{
+  width:56px;height:56px;border-radius:14px;
+  background:var(--green-lt);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
+}
+.svc-icon svg{color:var(--green)}
+.svc-card h3{
+  font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;
+  color:var(--brown);margin-bottom:10px;
+}
+.svc-card p{font-size:0.88rem;color:var(--text-lt);line-height:1.7}
+.svc-link{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:16px;font-size:0.82rem;font-weight:800;
+  color:var(--green);letter-spacing:0.04em;text-transform:uppercase;
+  transition:gap 0.2s;
+}
+.svc-link:hover{gap:10px}
+
+/* WHY US */
+.why{
+  padding:100px 0;
+  background:var(--brown);
+  position:relative;overflow:hidden;
+}
+.why-wavy{
+  position:absolute;top:0;left:0;right:0;height:60px;
+  background:var(--cream);
+  clip-path:ellipse(60% 100% at 50% 0%);
+}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1}
+.why .section-title{color:#fff}
+.why .section-sub{color:rgba(255,255,255,0.6)}
+.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.why-card{
+  background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.14);
+  border-radius:16px;padding:22px;
+}
+.why-card-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(255,255,255,0.12);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:12px;
+}
+.why-card-icon svg{color:rgba(255,255,255,0.8)}
+.why-card h4{font-size:0.92rem;font-weight:800;color:#fff;margin-bottom:6px}
+.why-card p{font-size:0.8rem;color:rgba(255,255,255,0.55);line-height:1.65}
+.why-cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--brown)}
+.btn-white:hover{background:var(--cream2)}
+.btn-outline-w{background:transparent;border:2px solid rgba(255,255,255,0.35);color:#fff}
+.btn-outline-w:hover{background:rgba(255,255,255,0.1)}
+.testimonial-stack{display:flex;flex-direction:column;gap:20px}
+.t-card{
+  background:#fff;border-radius:20px;padding:28px;
+  box-shadow:var(--shadow-md);
+}
+.t-stars{color:var(--gold);font-size:0.95rem;margin-bottom:10px}
+.t-text{font-size:0.9rem;color:var(--text-mid);line-height:1.7;font-style:italic;margin-bottom:16px}
+.t-author{display:flex;align-items:center;gap:10px}
+.t-avatar{
+  width:38px;height:38px;border-radius:50%;background:var(--green-lt);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;color:var(--green);
+}
+.t-name{font-size:0.85rem;font-weight:800;color:var(--brown)}
+.t-loc{font-size:0.75rem;color:var(--text-lt)}
+
+/* GALLERY */
+.gallery{padding:100px 0;background:var(--cream2)}
+.gallery-header{text-align:center;margin-bottom:56px}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.g-card{
+  border-radius:20px;overflow:hidden;
+  background:#fff;border:2px solid var(--border);
+  box-shadow:var(--shadow-sm);
+  transition:all 0.25s;
+}
+.g-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.g-img{
+  height:200px;background:linear-gradient(135deg,var(--green) 0%,#5a9e5a 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.g-img-placeholder{font-size:0.72rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;text-align:center;padding:20px}
+.g-body{padding:16px 20px 20px}
+.g-tag{
+  display:inline-block;background:var(--green-lt);color:var(--green);
+  font-size:0.68rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;
+  padding:4px 10px;border-radius:50px;margin-bottom:6px;
+}
+.g-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--brown)}
+
+/* AREAS */
+.areas{
+  padding:80px 0;
+  background:var(--green);
+  position:relative;overflow:hidden;
+}
+.areas-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.areas h2{
+  font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:#fff;
+  line-height:1.15;margin-bottom:16px;
+}
+.areas .sub{color:rgba(255,255,255,0.7);font-size:0.92rem;line-height:1.75}
+.areas-list{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+.a-item{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,0.1);border-radius:12px;
+  padding:12px 16px;border:1.5px solid rgba(255,255,255,0.15);
+  font-size:0.88rem;font-weight:700;color:#fff;
+  transition:background 0.2s;
+}
+.a-item:hover{background:rgba(255,255,255,0.18)}
+.a-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.6);flex-shrink:0}
+
+/* CTA BANNER */
+.cta-band{
+  padding:80px 0;background:var(--red);
+  text-align:center;
+}
+.cta-band h2{
+  font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:900;color:#fff;margin-bottom:12px;
+  font-style:italic;
+}
+.cta-band p{color:rgba(255,255,255,0.8);font-size:1rem;margin-bottom:32px}
+.cta-band .actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* CONTACT */
+.contact{padding:100px 0;background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.contact h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--brown);margin-bottom:12px;margin-top:12px}
+.contact-info-items{margin-top:32px;display:flex;flex-direction:column;gap:20px}
+.ci{display:flex;gap:14px;align-items:flex-start}
+.ci-icon{
+  width:42px;height:42px;border-radius:12px;background:var(--green-lt);
+  display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;
+}
+.ci-label{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-lt);margin-bottom:2px}
+.ci-val{font-size:0.95rem;font-weight:700;color:var(--brown)}
+.ci-val a{color:var(--brown)}
+.ci-val a:hover{color:var(--green)}
+
+.form-card{background:#fff;border-radius:24px;padding:40px;border:2px solid var(--border);box-shadow:var(--shadow-sm)}
+.form-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--brown);margin-bottom:4px}
+.form-card .fsub{font-size:0.85rem;color:var(--text-lt);margin-bottom:28px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-mid);margin-bottom:6px}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:12px 16px;
+  background:var(--cream2);border:2px solid var(--border);border-radius:12px;
+  font-family:'Nunito',sans-serif;font-size:0.92rem;color:var(--text);
+  transition:border-color 0.2s;appearance:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--green);background:#fff}
+.fg textarea{min-height:100px;resize:vertical}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-submit-btn{
+  width:100%;padding:16px;border-radius:50px;border:none;
+  background:var(--green);color:#fff;font-family:'Nunito',sans-serif;
+  font-size:0.95rem;font-weight:800;cursor:pointer;
+  box-shadow:0 4px 16px rgba(46,107,46,0.3);
+  transition:all 0.2s;margin-top:6px;
+}
+.form-submit-btn:hover{background:#245424;transform:translateY(-2px);box-shadow:0 8px 22px rgba(46,107,46,0.35)}
+
+/* FOOTER */
+.site-footer{background:var(--brown);padding:64px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.12)}
+.fb .name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:2px}
+.fb .sub{font-size:0.75rem;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.fb p{font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.75}
+.fc h4{font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-bottom:16px}
+.fc ul{display:flex;flex-direction:column;gap:10px}
+.fc ul li a{font-size:0.88rem;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.fc ul li a:hover{color:#fff}
+.footer-bottom{padding:20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:0.78rem;color:rgba(255,255,255,0.4)}
+.footer-bottom a{color:rgba(255,255,255,0.65)}
+
+/* FLOAT */
+.float-call{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  background:var(--green);color:#fff;
+  padding:14px 22px;border-radius:50px;
+  font-weight:800;font-size:0.88rem;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 6px 24px rgba(46,107,46,0.4);
+  transition:all 0.2s;
+  animation:fpulse 2.5s infinite;
+}
+.float-call:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(46,107,46,0.5);animation:none}
+@keyframes fpulse{
+  0%,100%{box-shadow:0 6px 24px rgba(46,107,46,0.4),0 0 0 0 rgba(46,107,46,0.4)}
+  50%{box-shadow:0 6px 24px rgba(46,107,46,0.4),0 0 0 10px rgba(46,107,46,0)}
+}
+
+@media(max-width:1024px){
+  .hero-inner,.why-grid,.contact-grid,.areas-inner{grid-template-columns:1fr;gap:40px}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-visual{display:none}
+  .why-grid .testimonial-stack{display:none}
+}
+@media(max-width:700px){
+  .site-nav,.nav-cta-wrap{display:none}
+  .hamburger{display:flex}
+  .services-grid,.gallery-grid,.areas-list{grid-template-columns:1fr}
+  .why-cards{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .fg-row{grid-template-columns:1fr}
+  .ribbon .container{flex-direction:column;text-align:center;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP RIBBON -->
+<div class="ribbon">
+  <div class="container">
+    <span>📞 <a href="tel:+19375550100">(937) 555-0100</a> — Call or text anytime!</span>
+    <div class="ribbon-badges">
+      <div class="ribbon-badge"><span>✓</span> Fully Insured</div>
+      <div class="ribbon-badge"><span>✓</span> Free Estimates</div>
+      <div class="ribbon-badge"><span>✓</span> 5-Star Rated</div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">
+      <div class="logo-emblem">
+        <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path d="M12 2C8 2 5 5.5 5 9c0 2.5 1.5 4.7 3.7 5.8L8 20h8l-.7-5.2C17.5 13.7 19 11.5 19 9c0-3.5-3-7-7-7z"/>
+          <line x1="12" y1="20" x2="12" y2="22"/>
+        </svg>
+      </div>
+      <div class="logo-words">
+        <div class="name">AJ's Tree Service</div>
+        <div class="sub">Landscape &amp; Hardscape · Dayton, OH</div>
+      </div>
+    </a>
+    <nav class="site-nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact" class="cta">Get Free Quote</a>
+    </nav>
+    <button class="hamburger" onclick="document.getElementById('mNav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mNav">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Get Free Quote →</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-bg-shape2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">⭐ Dayton's Trusted Tree Experts</div>
+        <h1>Your Yard Deserves the <em>Best Care</em></h1>
+        <p class="hero-desc">Family-friendly service, fair prices, and a crew that shows up on time and cleans up completely. From tree removal to full landscaping — we do it right.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-red">Get My Free Estimate</a>
+          <a href="tel:+19375550100" class="btn btn-outline">Call Us Now</a>
+        </div>
+        <div class="hero-trust-row">
+          <div class="trust-pill"><div class="dot"></div>Fully Insured</div>
+          <div class="trust-pill"><div class="dot"></div>Free Estimates</div>
+          <div class="trust-pill"><div class="dot"></div>Same-Day Response</div>
+          <div class="trust-pill"><div class="dot"></div>5-Star Rated</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-box">
+          <div class="hero-img-label">Your crew photo here</div>
+          <div class="hero-floating-card">
+            <div class="hfc-num">500+</div>
+            <div class="hfc-label">Jobs Done</div>
+          </div>
+          <div class="hero-floating-card2">
+            <div class="hfc2-stars">★★★★★</div>
+            <div class="hfc2-label">5.0 Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Services We Offer</h2>
+      <p class="section-sub">Everything your trees and outdoor spaces need — done right the first time.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8 2 5 5.5 5 9c0 2.5 1.5 4.7 3.7 5.8L8 20h8l-.7-5.2C17.5 13.7 19 11.5 19 9c0-3.5-3-7-7-7z"/></svg>
+        </div>
+        <h3>Tree Removal</h3>
+        <p>Safe and efficient removal of any size tree. We handle the whole job — cutting, hauling, and full cleanup.</p>
+        <a href="#contact" class="svc-link">Get a Quote →</a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M6 3v12M18 9a6 6 0 01-6 6 6 6 0 01-6-6"/><path d="M18 3v8"/></svg>
+        </div>
+        <h3>Tree Trimming &amp; Pruning</h3>
+        <p>Keep your trees healthy, beautiful, and safe with expert shaping and hazard limb removal.</p>
+        <a href="#contact" class="svc-link">Get a Quote →</a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+        </div>
+        <h3>Stump Grinding</h3>
+        <p>We grind stumps down fast so you can reclaim your yard. No mess left behind.</p>
+        <a href="#contact" class="svc-link">Get a Quote →</a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M3 20h18M5 20V10l7-7 7 7v10"/></svg>
+        </div>
+        <h3>Landscaping</h3>
+        <p>Design and installation — planting, mulching, sod, grading, and complete lawn transformations.</p>
+        <a href="#contact" class="svc-link">Get a Quote →</a>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="3" y="14" width="18" height="7" rx="1"/><path d="M6 14V8a6 6 0 0112 0v6"/></svg>
+        </div>
+        <h3>Hardscaping</h3>
+        <p>Patios, walkways, retaining walls, and fire pits built to enhance your outdoor living space.</p>
+        <a href="#contact" class="svc-link">Get a Quote →</a>
+      </div>
+
+      <div class="svc-card" style="border-color:rgba(184,41,26,0.3)">
+        <div class="svc-icon" style="background:var(--red-lt)">
+          <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="var(--red)" stroke-width="1.8"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <h3>Emergency Service</h3>
+        <p>Storm damage, fallen trees, dangerous limbs — we respond fast, day or night.</p>
+        <a href="tel:+19375550100" class="svc-link" style="color:var(--red)">Call Now →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="about">
+  <div class="why-wavy"></div>
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="section-label" style="color:#b8f5b8">Why Choose AJ's</div>
+        <h2 class="section-title">We Treat Your Yard<br/>Like Our Own</h2>
+        <p class="section-sub" style="max-width:none">Locally owned with roots right here in the community. We show up when we say we will, work clean, and stand behind every job.</p>
+        <div class="why-cards">
+          <div class="why-card">
+            <div class="why-card-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <h4>Fully Insured</h4>
+            <p>Complete liability &amp; workers' comp. You're protected on every job.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-card-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg></div>
+            <h4>Free Estimates</h4>
+            <p>Fast, transparent quotes. No pressure, no surprises.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-card-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+            <h4>Full Cleanup</h4>
+            <p>We leave your property better than we found it. Always.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-card-icon"><svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <h4>On Time</h4>
+            <p>We respect your schedule and show up when we say we will.</p>
+          </div>
+        </div>
+        <div class="why-cta">
+          <a href="#contact" class="btn btn-white">Get Free Estimate</a>
+          <a href="tel:+19375550100" class="btn btn-outline-w">Call (937) 555-0100</a>
+        </div>
+      </div>
+      <div class="testimonial-stack">
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Fair price, on time, and did exactly what they said they'd do. The crew was amazing and cleaned up perfectly. Highly recommend AJ's to everyone!"</p>
+          <div class="t-author">
+            <div class="t-avatar">D</div>
+            <div><div class="t-name">Dale M.</div><div class="t-loc">Beavercreek, OH · Google Review</div></div>
+          </div>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">"Most honest people I've ever done business with. Fair quote, outstanding results. Won't use anyone else for tree work ever again."</p>
+          <div class="t-author">
+            <div class="t-avatar">R</div>
+            <div><div class="t-name">Ross B.</div><div class="t-loc">Kettering, OH · Google Review</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <div class="section-label">See Our Work</div>
+      <h2 class="section-title">Real Projects, Real Results</h2>
+      <p class="section-sub" style="margin:12px auto 0">Add your own photos, before-and-afters, and certificates here to show customers what you can do.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-card">
+        <div class="g-img" style="background:linear-gradient(135deg,#2e6b2e,#5a9e5a)"><div class="g-img-placeholder">Your photo here</div></div>
+        <div class="g-body"><div class="g-tag">Tree Removal</div><div class="g-title">Large Oak – Beavercreek</div></div>
+      </div>
+      <div class="g-card">
+        <div class="g-img" style="background:linear-gradient(135deg,#1a4d8f,#3d78c0)"><div class="g-img-placeholder">Your photo here</div></div>
+        <div class="g-body"><div class="g-tag">Landscaping</div><div class="g-title">Backyard Makeover – Dayton</div></div>
+      </div>
+      <div class="g-card">
+        <div class="g-img" style="background:linear-gradient(135deg,#5a3012,#a06030)"><div class="g-img-placeholder">Your photo here</div></div>
+        <div class="g-body"><div class="g-tag">Hardscaping</div><div class="g-title">Patio &amp; Retaining Wall</div></div>
+      </div>
+      <div class="g-card">
+        <div class="g-img" style="background:linear-gradient(135deg,#3d8a3d,#6ab06a)"><div class="g-img-placeholder">Your photo here</div></div>
+        <div class="g-body"><div class="g-tag">Stump Grinding</div><div class="g-title">Multiple Stumps – Xenia</div></div>
+      </div>
+      <div class="g-card">
+        <div class="g-img" style="background:linear-gradient(135deg,#444,#777)"><div class="g-img-placeholder">Your photo here</div></div>
+        <div class="g-body"><div class="g-tag">Tree Trimming</div><div class="g-title">Crown Reduction – Kettering</div></div>
+      </div>
+      <div class="g-card" style="border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;text-align:center;padding:32px">
+        <div style="font-size:2rem;margin-bottom:10px">📷</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--brown);margin-bottom:6px">Your Photos Go Here</div>
+        <div style="font-size:0.8rem;color:var(--text-lt);line-height:1.6">Add before &amp; afters, certificates, and crew photos to build trust</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="areas">
+  <div class="container">
+    <div class="areas-inner">
+      <div>
+        <div class="section-label" style="color:rgba(255,255,255,0.6)">Where We Work</div>
+        <h2>Serving Dayton &amp; the Miami Valley</h2>
+        <p class="sub">We're right here in the community. If you don't see your city, just give us a call — chances are we cover it.</p>
+        <div style="margin-top:28px">
+          <a href="#contact" class="btn btn-white">Check Your Area</a>
+        </div>
+      </div>
+      <div class="areas-list">
+        <div class="a-item"><div class="a-dot"></div>Dayton</div>
+        <div class="a-item"><div class="a-dot"></div>Beavercreek</div>
+        <div class="a-item"><div class="a-dot"></div>Centerville</div>
+        <div class="a-item"><div class="a-dot"></div>Fairborn</div>
+        <div class="a-item"><div class="a-dot"></div>Xenia</div>
+        <div class="a-item"><div class="a-dot"></div>Kettering</div>
+        <div class="a-item"><div class="a-dot"></div>Miamisburg</div>
+        <div class="a-item"><div class="a-dot"></div>Huber Heights</div>
+        <div class="a-item"><div class="a-dot"></div>Oakwood</div>
+        <div class="a-item"><div class="a-dot"></div>Yellow Springs</div>
+        <div class="a-item"><div class="a-dot"></div>Springboro</div>
+        <div class="a-item"><div class="a-dot"></div>+ More Areas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready for a Free Estimate?</h2>
+    <p>No pressure, no obligation. Just an honest quote from people who care about your yard.</p>
+    <div class="actions">
+      <a href="#contact" class="btn btn-white">Request Estimate Online</a>
+      <a href="tel:+19375550100" class="btn btn-outline-w">Call (937) 555-0100</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Get in Touch</div>
+        <h2>Let's Talk About<br/>Your Project</h2>
+        <p class="section-sub">Fill out the form or give us a call. We'll get back to you fast — usually within a few hours.</p>
+        <ul class="contact-info-items">
+          <li class="ci">
+            <div class="ci-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.35 2 2 0 013.6 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.6a16 16 0 006.29 6.29l.95-.95a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div class="ci-label">Phone</div><div class="ci-val"><a href="tel:+19375550100">(937) 555-0100</a></div></div>
+          </li>
+          <li class="ci">
+            <div class="ci-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:info@ajstreeservice.com">info@ajstreeservice.com</a></div></div>
+          </li>
+          <li class="ci">
+            <div class="ci-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><div class="ci-label">Hours</div><div class="ci-val">Mon–Sat 7am–6pm<br/><span style="font-size:0.82rem;color:var(--text-lt)">Emergency service available 24/7</span></div></div>
+          </li>
+        </ul>
+      </div>
+      <div class="form-card">
+        <h3>Free Estimate Form</h3>
+        <p class="fsub">We respond fast — often within a couple hours!</p>
+        <form onsubmit="event.preventDefault();this.querySelector('.form-submit-btn').textContent='✓ Sent! We\'ll be in touch soon.'">
+          <div class="fg-row">
+            <div class="fg"><label>First Name</label><input type="text" placeholder="John"/></div>
+            <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith"/></div>
+          </div>
+          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="(937) 555-0000"/></div>
+          <div class="fg"><label>Email Address</label><input type="email" placeholder="you@example.com"/></div>
+          <div class="fg">
+            <label>Service Needed</label>
+            <select>
+              <option value="" disabled selected>Choose a service…</option>
+              <option>Tree Removal</option>
+              <option>Tree Trimming / Pruning</option>
+              <option>Stump Grinding</option>
+              <option>Landscaping</option>
+              <option>Hardscaping</option>
+              <option>Emergency Service</option>
+              <option>Not Sure / Other</option>
+            </select>
+          </div>
+          <div class="fg"><label>Tell Us About Your Project</label><textarea placeholder="Describe what you need — size of trees, location, anything helpful…"></textarea></div>
+          <button type="submit" class="form-submit-btn">Send My Request 🌿</button>
+          <p style="text-align:center;font-size:0.76rem;color:var(--text-lt);margin-top:10px">🔒 Your info stays private. No spam, ever.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fb">
+        <div class="name">AJ's Tree Service</div>
+        <div class="sub">Landscape &amp; Hardscape</div>
+        <p>Locally owned and operated in the Dayton, Ohio area. Honest work, fair prices, and a crew you can trust.</p>
+      </div>
+      <div class="fc">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Tree Removal</a></li>
+          <li><a href="#services">Tree Trimming</a></li>
+          <li><a href="#services">Stump Grinding</a></li>
+          <li><a href="#services">Landscaping</a></li>
+          <li><a href="#services">Hardscaping</a></li>
+          <li><a href="#services">Emergency</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Service Areas</h4>
+        <ul>
+          <li><a href="#contact">Dayton</a></li>
+          <li><a href="#contact">Beavercreek</a></li>
+          <li><a href="#contact">Kettering</a></li>
+          <li><a href="#contact">Centerville</a></li>
+          <li><a href="#contact">Fairborn</a></li>
+          <li><a href="#contact">Xenia</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Free Estimate</a></li>
+          <li><a href="tel:+19375550100">Call Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="yr3"></span> AJ's Tree Service. All rights reserved.</div>
+      <div><a href="#">Privacy Policy</a> · <a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:+19375550100" class="float-call">
+  <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.35 2 2 0 013.6 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.6a16 16 0 006.29 6.29l.95-.95a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+  Call Now
+</a>
+
+<script>
+document.getElementById('yr3').textContent = new Date().getFullYear();
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+scrollY-72,behavior:'smooth'})}
+  });
+});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target)}}),{threshold:0.1});
+document.querySelectorAll('.svc-card,.g-card,.t-card,.why-card,.a-item').forEach((el,i)=>{
+  el.style.opacity='0';el.style.transform='translateY(20px)';
+  el.style.transition=`opacity 0.5s ${i*0.07}s ease,transform 0.5s ${i*0.07}s ease`;
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
