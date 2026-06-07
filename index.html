@@ -1321,6 +1321,7 @@ if (heroPhotos.length > 0) {
 let currentLang = localStorage.getItem('ajt-lang') || 'en';
 
 function applyLang(lang) {
+  const t = window.translations || {};
   currentLang = lang;
   localStorage.setItem('ajt-lang', lang);
   document.documentElement.lang = lang;
@@ -1342,7 +1343,7 @@ function applyLang(lang) {
 document.getElementById('langToggle').addEventListener('change', function() {
   applyLang(this.checked ? 'es' : 'en');
 });
-applyLang(currentLang);
+setTimeout(function(){applyLang(currentLang);},0);
 
 // ── MOBILE NAV ────────────────────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
