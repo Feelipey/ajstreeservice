@@ -1660,3 +1660,401 @@ document.querySelectorAll('.svc-accordion-btn').forEach(function(btn) {
 
 // ── SCROLL ANIMATIONS ─────────────────────────────────────────────────────────
 const observer = new Intersection
+
+// ── FIX PATCH: Spanish translations + Lightbox + Link fixes ─────────────────
+
+// 1. TRANSLATIONS
+window.translations = {
+  en: {
+    'topbar.location': 'Serving New Carlisle, Dayton & Surrounding Areas',
+    'topbar.insured': 'Fully Insured',
+    'topbar.estimates': 'Free Estimates',
+    'topbar.langLabel': 'ES',
+    'nav.about': 'About',
+    'nav.services': 'Services',
+    'nav.gallery': 'Gallery',
+    'nav.reviews': 'Reviews',
+    'nav.cta': 'Get Free Quote',
+    'hero.badge': 'New Carlisle & Dayton, Ohio',
+    'hero.title1': 'Expert',
+    'hero.title2': 'Tree & Landscape',
+    'hero.title3': 'Services You Can Trust',
+    'hero.sub': 'Professional tree removal, trimming, landscaping, lawn care, hardscaping & construction — free estimates, fully insured.',
+    'hero.cta1': 'Get Your Free Estimate',
+    'hero.cta2': 'View Our Services',
+    'hero.callLabel': 'Call Us Anytime',
+    'hl.tree': 'Tree Care',
+    'hl.tree.sub': 'Removal, pruning & more',
+    'hl.landscape': 'Landscaping',
+    'hl.landscape.sub': 'Design & installation',
+    'hl.hardscape': 'Hardscaping',
+    'hl.hardscape.sub': 'Patios, walls & pavers',
+    'hl.emergency': 'Emergency Service',
+    'hl.emergency.sub': 'Call us 24/7',
+    'stat.years': 'Years Exp.',
+    'stat.jobs': 'Jobs Done',
+    'stat.sat': 'Satisfaction',
+    'about.label': "About AJ's Tree Service",
+    'about.title': 'Family Owned & Built on Trust',
+    'about.body1': 'We are a family owned business that has been around since 2003. Anthony (AJ) Vazquez is the owner, and is an ISA Certified Arborist (#OH-311557A). We strive to provide quality work and complete customer satisfaction.',
+    'about.body2': 'We not only do tree and landscape work, but we also do remodeling, painting, decks, cement work, excavating, and more. We are a one-stop-shop for all of your property needs.',
+    'bilingual': 'English & Spanish spoken',
+    'check.1': "Full liability & workers' comp insurance on every job",
+    'check.2': 'Free and fast estimates — no waiting, no hidden fees',
+    'check.3': 'Complete cleanup — debris hauled away every time',
+    'check.4': 'Accepting Calls 24/7',
+    'about.cta': 'Get a Free Estimate',
+    'cred.label': 'Certified & Trusted',
+    'cred.title': 'ISA Certified Arborist',
+    'cred.body': "AJ's Tree Service brings over 20 years of hands-on expertise backed by professional ISA certification. Anthony Vazquez holds an active ISA Certified Arborist\u00ae credential.",
+    'cred.body2': "The ISA Certified Arborist\u00ae program is accredited by ANAB and requires rigorous training, ongoing education, and adherence to industry best practices.",
+    'cred.stat1': 'Cert. Number',
+    'cred.stat2': 'Valid Through',
+    'cred.stat3': 'Experience',
+    'services.label': 'What We Do',
+    'services.title': 'Our Services',
+    'services.sub': 'From routine maintenance to major projects, we deliver quality workmanship on every job.',
+    'svc.tree.title': 'Tree Care',
+    'svc.tree.desc': 'Expert removal, trimming, and care for trees of every size — residential or commercial, we handle it safely and efficiently.',
+    'svc.services.toggle': "What's Included",
+    'svc.tree.t1': 'Tree Removal',
+    'svc.tree.t2': 'Tree Pruning',
+    'svc.tree.t3': 'Stump Grinding',
+    'svc.tree.t4': 'Stump Mulch Removal',
+    'svc.tree.t5': 'Tree Plantings',
+    'svc.tree.t6': 'Structural Pruning',
+    'svc.tree.t8': 'Storm Cleanups',
+    'svc.quote': 'Get a Quote →',
+    'svc.landscape.title': 'Landscaping',
+    'svc.landscape.desc': 'Full-service landscape design and installation — we transform outdoor spaces with planting, mulching, clearing, and seasonal cleanups.',
+    'svc.landscape.t1': 'Landscape Design',
+    'svc.landscape.t2': 'Mulching',
+    'svc.landscape.t3': 'Planting',
+    'svc.landscape.t6': 'Land Clearing',
+    'svc.landscape.t7': 'Spring & Fall Cleanup',
+    'svc.lawn.title': 'Lawn Care',
+    'svc.lawn.desc': 'From new lawn establishment to ongoing maintenance — aeration, seeding, sod, fertilization, grading, and drainage solutions.',
+    'svc.lawn.t1': 'Aeration',
+    'svc.lawn.t2': 'Dethatching',
+    'svc.lawn.t3': 'New Lawn Establishment',
+    'svc.lawn.t4': 'Overseeding',
+    'svc.lawn.t5': 'Sod Installation',
+    'svc.lawn.t7': 'Fertilization',
+    'svc.lawn.t8': 'Grading',
+    'svc.lawn.t10': 'Drainage',
+    'svc.hardscape.title': 'Hardscaping',
+    'svc.hardscape.desc': 'Custom patios, retaining walls, and pavers — built to last and designed to enhance your outdoor living space.',
+    'svc.hardscape.t1': 'Retaining Walls',
+    'svc.hardscape.t2': 'Pavers',
+    'svc.hardscape.t3': 'Patios',
+    'why.label': 'Why Choose Us',
+    'why.title': "The AJ's Difference",
+    'why.1.title': 'Fully Insured & ISA Certified',
+    'why.1.desc': "Full liability and workers' comp insurance on every job. Anthony holds an active ISA Certified Arborist\u00ae credential.",
+    'why.2.title': 'Free & Fast Estimates',
+    'why.2.desc': 'No waiting around — we provide quick, transparent estimates with no hidden fees.',
+    'why.3.title': 'Complete Cleanup, Every Time',
+    'why.3.desc': 'Every job ends with a thorough cleanup. We haul away all debris so your property is left spotless.',
+    'why.4.title': 'Locally Owned Since 2003',
+    'why.4.desc': "We've been serving the Miami Valley for over 20 years. We're your neighbors, and we treat every property like our own.",
+    'why.cta.title': 'Ready to Get Started?',
+    'why.cta.desc': 'Contact us today for your free, no-obligation estimate.',
+    'why.cta.btn': 'Request Free Estimate',
+    'why.cta.call': 'Call Now',
+    'gallery.label': 'Our Work',
+    'gallery.title': 'See the Results',
+    'gallery.sub': 'Real projects, real transformations across New Carlisle, Dayton, and the Miami Valley.',
+    'reviews.label': 'What Clients Say',
+    'reviews.title': 'Real Reviews',
+    'areas.label': 'Service Areas',
+    'areas.title': 'We Come to You',
+    'areas.sub': 'Serving the Miami Valley and beyond',
+    'areas.more': '+ More',
+    'cta.title': 'Ready to Get Started?',
+    'cta.sub': 'Contact us today for your free, no-obligation estimate. We respond fast — often the same day.',
+    'cta.btn1': 'Request Free Estimate',
+    'cta.btn2': 'Call (513) 344-3485',
+    'form.title': 'Free Estimate Form',
+    'form.sub': "We'll respond within a few hours — often sooner.",
+    'form.firstName': 'First Name',
+    'form.lastName': 'Last Name',
+    'form.phone': 'Phone Number',
+    'form.email': 'Email Address',
+    'form.service': 'Service Needed',
+    'form.servicePH': 'Select a service…',
+    'form.opt.tree': 'Tree Removal / Pruning',
+    'form.opt.stump': 'Stump Grinding',
+    'form.opt.landscape': 'Landscaping',
+    'form.opt.lawn': 'Lawn Care',
+    'form.opt.hardscape': 'Hardscaping',
+    'form.opt.construction': 'Construction / Excavating',
+    'form.opt.emergency': 'Emergency Service',
+    'form.opt.other': 'Other / Not Sure',
+    'form.project': 'Describe Your Project',
+    'form.submit': 'Send My Request',
+    'form.note': '\ud83d\udd12 Your info is private. No spam, ever.',
+    'footer.tagline': "Serving the Miami Valley with expert tree care, landscaping, hardscaping & construction since 2003.",
+    'footer.cert': 'ISA Certified Arborist',
+    'footer.insured': 'Fully Insured',
+    'footer.bilingual': 'English & Spanish',
+    'footer.services': 'Services',
+    'footer.svc.tree': 'Tree Care',
+    'footer.svc.landscape': 'Landscaping',
+    'footer.svc.lawn': 'Lawn Care',
+    'footer.svc.hardscape': 'Hardscaping',
+    'footer.svc.construction': 'Construction',
+    'footer.company': 'Company',
+    'footer.about': 'About Us',
+    'footer.gallery': 'Gallery',
+    'footer.reviews': 'Reviews',
+    'footer.contact': 'Contact',
+    'footer.contactTitle': 'Contact',
+    'footer.copy': "\u00a9 2025 AJ's Tree Service. All rights reserved.",
+    'footer.isa': 'ISA Certified Arborist #OH-311557A',
+    'float.btn': 'Call Now'
+  },
+  es: {
+    'topbar.location': 'Sirviendo New Carlisle, Dayton y \u00c1reas Cercanas',
+    'topbar.insured': 'Totalmente Asegurado',
+    'topbar.estimates': 'Estimados Gratis',
+    'topbar.langLabel': 'EN',
+    'nav.about': 'Nosotros',
+    'nav.services': 'Servicios',
+    'nav.gallery': 'Galer\u00eda',
+    'nav.reviews': 'Rese\u00f1as',
+    'nav.cta': 'Cotizaci\u00f3n Gratis',
+    'hero.badge': 'New Carlisle & Dayton, Ohio',
+    'hero.title1': 'Expertos en',
+    'hero.title2': '\u00c1rboles y Paisajismo',
+    'hero.title3': 'Servicios de Confianza',
+    'hero.sub': 'Remoci\u00f3n de \u00e1rboles, poda, paisajismo, cuidado de c\u00e9sped, pisos de piedra y construcci\u00f3n — estimados gratis, totalmente asegurados.',
+    'hero.cta1': 'Obt\u00e9n tu Estimado Gratis',
+    'hero.cta2': 'Ver Nuestros Servicios',
+    'hero.callLabel': 'Ll\u00e1manos en Cualquier Momento',
+    'hl.tree': '\u00c1rboles',
+    'hl.tree.sub': 'Remoci\u00f3n, poda y m\u00e1s',
+    'hl.landscape': 'Paisajismo',
+    'hl.landscape.sub': 'Dise\u00f1o e instalaci\u00f3n',
+    'hl.hardscape': 'Pisos y Muros',
+    'hl.hardscape.sub': 'Patios, muros y adoquines',
+    'hl.emergency': 'Emergencia',
+    'hl.emergency.sub': 'Ll\u00e1manos 24/7',
+    'stat.years': 'A\u00f1os de Exp.',
+    'stat.jobs': 'Trabajos Realizados',
+    'stat.sat': 'Satisfacci\u00f3n',
+    'about.label': "Sobre AJ's Tree Service",
+    'about.title': 'Empresa Familiar de Confianza',
+    'about.body1': 'Somos una empresa familiar establecida desde el 2003. Anthony (AJ) V\u00e1zquez es el propietario y un Arborista Certificado por la ISA (#OH-311557A). Nos esforzamos por brindar trabajo de calidad y satisfacci\u00f3n total al cliente.',
+    'about.body2': 'No solo hacemos trabajo de \u00e1rboles y paisajismo, tambi\u00e9n hacemos remodelaciones, pintura, decks, trabajo de cemento, excavaciones y m\u00e1s. Somos tu soluci\u00f3n completa para todas las necesidades de tu propiedad.',
+    'bilingual': 'Se habla ingl\u00e9s y espa\u00f1ol',
+    'check.1': 'Seguro completo de responsabilidad y compensaci\u00f3n laboral en cada trabajo',
+    'check.2': 'Estimados r\u00e1pidos y gratuitos — sin espera, sin costos ocultos',
+    'check.3': 'Limpieza completa — llevamos todos los escombros siempre',
+    'check.4': 'Aceptando llamadas 24/7',
+    'about.cta': 'Obt\u00e9n un Estimado Gratis',
+    'cred.label': 'Certificado y de Confianza',
+    'cred.title': 'Arborista Certificado ISA',
+    'cred.body': "AJ's Tree Service tiene m\u00e1s de 20 a\u00f1os de experiencia pr\u00e1ctica respaldada por certificaci\u00f3n profesional ISA. Anthony V\u00e1zquez posee una credencial activa de Arborista Certificado ISA\u00ae.",
+    'cred.body2': "El programa ISA Certified Arborist\u00ae est\u00e1 acreditado por ANAB y requiere formaci\u00f3n rigurosa, educaci\u00f3n continua y adherencia a las mejores pr\u00e1cticas de la industria.",
+    'cred.stat1': 'N\u00fam. de Cert.',
+    'cred.stat2': 'V\u00e1lido Hasta',
+    'cred.stat3': 'Experiencia',
+    'services.label': 'Lo Que Hacemos',
+    'services.title': 'Nuestros Servicios',
+    'services.sub': 'Desde mantenimiento rutinario hasta proyectos mayores, entregamos trabajo de calidad en cada trabajo.',
+    'svc.tree.title': 'Cuidado de \u00c1rboles',
+    'svc.tree.desc': 'Remoci\u00f3n experta, poda y cuidado de \u00e1rboles de todo tama\u00f1o — residencial o comercial, lo manejamos de forma segura y eficiente.',
+    'svc.services.toggle': 'Qu\u00e9 Incluye',
+    'svc.tree.t1': 'Remoci\u00f3n de \u00c1rboles',
+    'svc.tree.t2': 'Poda de \u00c1rboles',
+    'svc.tree.t3': 'Trituraci\u00f3n de Tocones',
+    'svc.tree.t4': 'Remoci\u00f3n de Astillas',
+    'svc.tree.t5': 'Siembra de \u00c1rboles',
+    'svc.tree.t6': 'Poda Estructural',
+    'svc.tree.t8': 'Limpieza de Tormentas',
+    'svc.quote': 'Pedir Cotizaci\u00f3n \u2192',
+    'svc.landscape.title': 'Paisajismo',
+    'svc.landscape.desc': 'Dise\u00f1o e instalaci\u00f3n completa de paisaje — transformamos espacios exteriores con siembra, acolchado, desbroce y limpiezas estacionales.',
+    'svc.landscape.t1': 'Dise\u00f1o de Paisaje',
+    'svc.landscape.t2': 'Acolchado',
+    'svc.landscape.t3': 'Siembra',
+    'svc.landscape.t6': 'Desbroce de Terrenos',
+    'svc.landscape.t7': 'Limpieza de Primavera y Oto\u00f1o',
+    'svc.lawn.title': 'Cuidado del C\u00e9sped',
+    'svc.lawn.desc': 'Desde el establecimiento de nuevos c\u00e9spedes hasta el mantenimiento continuo — aireaci\u00f3n, semillado, sod, fertilizaci\u00f3n, nivelaci\u00f3n y drenaje.',
+    'svc.lawn.t1': 'Aireaci\u00f3n',
+    'svc.lawn.t2': 'Escarificado',
+    'svc.lawn.t3': 'Establecimiento de C\u00e9sped Nuevo',
+    'svc.lawn.t4': 'Resiembra',
+    'svc.lawn.t5': 'Instalaci\u00f3n de Sod',
+    'svc.lawn.t7': 'Fertilizaci\u00f3n',
+    'svc.lawn.t8': 'Nivelaci\u00f3n',
+    'svc.lawn.t10': 'Drenaje',
+    'svc.hardscape.title': 'Pisos y Muros',
+    'svc.hardscape.desc': 'Patios personalizados, muros de contenci\u00f3n y adoquines — construidos para durar y dise\u00f1ados para mejorar tu espacio exterior.',
+    'svc.hardscape.t1': 'Muros de Contenci\u00f3n',
+    'svc.hardscape.t2': 'Adoquines',
+    'svc.hardscape.t3': 'Patios',
+    'why.label': 'Por Qu\u00e9 Elegirnos',
+    'why.title': "La Diferencia de AJ's",
+    'why.1.title': 'Totalmente Asegurado y Certificado ISA',
+    'why.1.desc': 'Seguro completo de responsabilidad y compensaci\u00f3n laboral en cada trabajo. Anthony posee una credencial activa de Arborista Certificado ISA\u00ae.',
+    'why.2.title': 'Estimados Gratis y R\u00e1pidos',
+    'why.2.desc': 'Sin esperas — brindamos estimados r\u00e1pidos y transparentes sin costos ocultos.',
+    'why.3.title': 'Limpieza Completa, Siempre',
+    'why.3.desc': 'Cada trabajo termina con una limpieza completa. Llevamos todos los escombros para que tu propiedad quede impecable.',
+    'why.4.title': 'Empresa Local Desde 2003',
+    'why.4.desc': 'Llevamos m\u00e1s de 20 a\u00f1os sirviendo al Valle de Miami. Somos tus vecinos y tratamos cada propiedad como la nuestra.',
+    'why.cta.title': '\u00bfListo para Comenzar?',
+    'why.cta.desc': 'Cont\u00e1ctanos hoy para tu estimado gratis sin compromiso.',
+    'why.cta.btn': 'Solicitar Estimado Gratis',
+    'why.cta.call': 'Llamar Ahora',
+    'gallery.label': 'Nuestro Trabajo',
+    'gallery.title': 'Mira los Resultados',
+    'gallery.sub': 'Proyectos reales, transformaciones reales en New Carlisle, Dayton y el Valle de Miami.',
+    'reviews.label': 'Lo Que Dicen los Clientes',
+    'reviews.title': 'Rese\u00f1as Reales',
+    'areas.label': '\u00c1reas de Servicio',
+    'areas.title': 'Vamos a Donde Est\u00e1s',
+    'areas.sub': 'Sirviendo el Valle de Miami y m\u00e1s all\u00e1',
+    'areas.more': '+ M\u00e1s',
+    'cta.title': '\u00bfListo para Comenzar?',
+    'cta.sub': 'Cont\u00e1ctanos hoy para tu estimado gratis sin compromiso. Respondemos r\u00e1pido — frecuentemente el mismo d\u00eda.',
+    'cta.btn1': 'Solicitar Estimado Gratis',
+    'cta.btn2': 'Llamar al (513) 344-3485',
+    'form.title': 'Formulario de Estimado Gratis',
+    'form.sub': 'Respondemos en pocas horas — frecuentemente antes.',
+    'form.firstName': 'Nombre',
+    'form.lastName': 'Apellido',
+    'form.phone': 'N\u00famero de Tel\u00e9fono',
+    'form.email': 'Correo Electr\u00f3nico',
+    'form.service': 'Servicio Necesario',
+    'form.servicePH': 'Selecciona un servicio\u2026',
+    'form.opt.tree': 'Remoci\u00f3n / Poda de \u00c1rboles',
+    'form.opt.stump': 'Trituraci\u00f3n de Tocones',
+    'form.opt.landscape': 'Paisajismo',
+    'form.opt.lawn': 'Cuidado del C\u00e9sped',
+    'form.opt.hardscape': 'Pisos y Muros',
+    'form.opt.construction': 'Construcci\u00f3n / Excavaci\u00f3n',
+    'form.opt.emergency': 'Servicio de Emergencia',
+    'form.opt.other': 'Otro / No Estoy Seguro',
+    'form.project': 'Describe Tu Proyecto',
+    'form.submit': 'Enviar Mi Solicitud',
+    'form.note': '\ud83d\udd12 Tu informaci\u00f3n es privada. Sin spam, nunca.',
+    'footer.tagline': 'Sirviendo el Valle de Miami con experto cuidado de \u00e1rboles, paisajismo, pisos de piedra y construcci\u00f3n desde 2003.',
+    'footer.cert': 'Arborista Certificado ISA',
+    'footer.insured': 'Totalmente Asegurado',
+    'footer.bilingual': 'Ingl\u00e9s y Espa\u00f1ol',
+    'footer.services': 'Servicios',
+    'footer.svc.tree': 'Cuidado de \u00c1rboles',
+    'footer.svc.landscape': 'Paisajismo',
+    'footer.svc.lawn': 'Cuidado del C\u00e9sped',
+    'footer.svc.hardscape': 'Pisos y Muros',
+    'footer.svc.construction': 'Construcci\u00f3n',
+    'footer.company': 'Empresa',
+    'footer.about': 'Sobre Nosotros',
+    'footer.gallery': 'Galer\u00eda',
+    'footer.reviews': 'Rese\u00f1as',
+    'footer.contact': 'Contacto',
+    'footer.contactTitle': 'Contacto',
+    'footer.copy': "\u00a9 2025 AJ's Tree Service. Todos los derechos reservados.",
+    'footer.isa': 'Arborista Certificado ISA #OH-311557A',
+    'float.btn': 'Llamar Ahora'
+  }
+};
+
+// 2. SETLANG FUNCTION
+window.setLang = function(lang) {
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.setAttribute('lang', lang === 'es' ? 'es' : 'en');
+  const t = window.translations[lang] || window.translations.en;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+  try { localStorage.setItem('aj_lang', lang); } catch(e) {}
+};
+
+// 3. WIRE UP LANGUAGE TOGGLE
+(function() {
+  const toggle = document.getElementById('langToggle');
+  if (!toggle) return;
+  let savedLang = 'en';
+  try { savedLang = localStorage.getItem('aj_lang') || 'en'; } catch(e) {}
+  if (savedLang === 'es') {
+    toggle.checked = true;
+    window.setLang('es');
+  }
+  toggle.addEventListener('change', function() {
+    window.setLang(this.checked ? 'es' : 'en');
+  });
+})();
+
+// 4. LIGHTBOX
+(function() {
+  const lb = document.getElementById('lightbox');
+  const lbContent = document.getElementById('lbContent');
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  if (!lb || !lbContent) return;
+
+  const galleryImages = [];
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    currentIndex = (index + galleryImages.length) % galleryImages.length;
+    lbContent.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = galleryImages[currentIndex];
+    img.alt = "AJ's Tree Service Project";
+    lbContent.appendChild(img);
+  }
+
+  function openLightbox(index) {
+    showSlide(index);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.gallery-scroll .gallery-item').forEach(function(item, i) {
+    const img = item.querySelector('img');
+    if (img) galleryImages.push(img.src || img.getAttribute('src'));
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', function() { openLightbox(i); });
+  });
+
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  if (lbPrev)  lbPrev.addEventListener('click', function() { showSlide(currentIndex - 1); });
+  if (lbNext)  lbNext.addEventListener('click', function() { showSlide(currentIndex + 1); });
+  lb.addEventListener('click', function(e) { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
+    if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+  });
+})();
+
+// 5. FIX BROKEN LINKS
+(function() {
+  document.querySelectorAll('a[href="#"]').forEach(function(a) {
+    if (a.querySelector('img') || a.closest('.nav-logo') || a.closest('.site-footer')) {
+      a.href = '/';
+    } else {
+      a.href = '#contact';
+    }
+  });
+})();
+
