@@ -541,7 +541,7 @@
     .insta-handle{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-size:.85rem;font-weight:700;padding:8px 18px;border-radius:30px;text-decoration:none;letter-spacing:.04em;transition:opacity var(--tr)}
     .insta-handle:hover{opacity:.88}
     .insta-handle svg{width:18px;height:18px;fill:#fff}
-    .insta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:900px;margin:0 auto 28px}
+    .insta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:900px;margin:0 auto 28px}.insta-embed-tile{aspect-ratio:auto;overflow:hidden;background:#fff;min-height:280px;align-self:start}.insta-embed-tile .instagram-media{min-width:0!important;max-width:100%!important;margin:0!important}
     .insta-tile{border-radius:var(--radius);overflow:hidden;aspect-ratio:1;background:#1a6b36;position:relative;cursor:pointer}
     .insta-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
     .insta-tile:hover img{transform:scale(1.06)}
@@ -1190,10 +1190,12 @@
       </a>
     </div>
     <div class="insta-grid" id="instaPreviewGrid">
-      <div class="insta-tile"><img src="images/insta1.jpg" alt="Instagram post 1" loading="lazy" onerror="this.parentNode.innerHTML='<div class=insta-tile-ph><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'5\' ry=\'5\' fill=\'none\' stroke=\'rgba(255,255,255,.35)\' stroke-width=\'1.5\'/></svg><span>Photo 1</span></div>'"></div>
-      <div class="insta-tile"><img src="images/insta2.jpg" alt="Instagram post 2" loading="lazy" onerror="this.parentNode.innerHTML='<div class=insta-tile-ph><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'5\' ry=\'5\' fill=\'none\' stroke=\'rgba(255,255,255,.35)\' stroke-width=\'1.5\'/></svg><span>Photo 2</span></div>'"></div>
-      <div class="insta-tile"><img src="images/insta3.jpg" alt="Instagram post 3" loading="lazy" onerror="this.parentNode.innerHTML='<div class=insta-tile-ph><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'5\' ry=\'5\' fill=\'none\' stroke=\'rgba(255,255,255,.35)\' stroke-width=\'1.5\'/></svg><span>Photo 3</span></div>'"></div>
-      <div class="insta-tile"><img src="images/insta4.jpg" alt="Instagram post 4" loading="lazy" onerror="this.parentNode.innerHTML='<div class=insta-tile-ph><svg viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'5\' ry=\'5\' fill=\'none\' stroke=\'rgba(255,255,255,.35)\' stroke-width=\'1.5\'/></svg><span>Photo 4</span></div>'"></div>
+      <div class="insta-tile insta-embed-tile">
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DZIiMQHmkGv/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:8px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:0;padding:0;width:100%"><div style="padding:16px;text-align:center"><a href="https://www.instagram.com/p/DZIiMQHmkGv/" target="_blank" style="color:#000;font-family:Arial,sans-serif;font-size:.9rem">View this post on Instagram</a></div></blockquote>
+      </div>
+      <div class="insta-tile"><img src="images/photo5.jpg" alt="Landscaping crew at work" loading="lazy"></div>
+      <div class="insta-tile"><img src="images/photo22.jpg" alt="Planting and mulching" loading="lazy"></div>
+      <div class="insta-tile"><img src="images/photo9.jpg" alt="Drainage installation" loading="lazy"></div>
     </div>
     <div class="insta-cta">
       <a href="https://www.instagram.com/ajstreeserv/" target="_blank" rel="noopener" class="insta-handle">
@@ -1871,3 +1873,5 @@ window.setLang = function(lang) {
 })();
 
 </script>
+
+<script async src="https://www.instagram.com/embed.js"></script>
