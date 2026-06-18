@@ -541,18 +541,9 @@
     .insta-handle{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;font-size:.85rem;font-weight:700;padding:8px 18px;border-radius:30px;text-decoration:none;letter-spacing:.04em;transition:opacity var(--tr)}
     .insta-handle:hover{opacity:.88}
     .insta-handle svg{width:18px;height:18px;fill:#fff}
-    .insta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:900px;margin:0 auto 28px}.insta-embed-tile{aspect-ratio:auto;overflow:hidden;background:#fff;min-height:280px;align-self:start}.insta-embed-tile .instagram-media{min-width:0!important;max-width:100%!important;margin:0!important}
-    @media(max-width:768px){.insta-grid{grid-template-columns:1fr}.insta-embed-tile{min-height:auto}}
-    .insta-tile{border-radius:var(--radius);overflow:hidden;aspect-ratio:1;background:#1a6b36;position:relative;cursor:pointer}
-    .insta-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-    .insta-tile:hover img{transform:scale(1.06)}
-    .insta-tile-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.4);background:linear-gradient(135deg,#2d1e3e,#8b3980)}
-    .insta-tile-ph svg{width:32px;height:32px;fill:rgba(255,255,255,.35)}
-    .insta-tile-ph span{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em}
-    .insta-cta{text-align:center}
+    .insta-single{max-width:540px;margin:0 auto 28px}.insta-cta{text-align:center}
     @media(max-width:768px){
       .instagram-section{padding:48px 0}
-      .insta-grid{grid-template-columns:repeat(2,1fr);gap:8px}
     }
 
     /* SERVICE ACCORDION */
@@ -1190,13 +1181,18 @@
         @ajstreeserv
       </a>
     </div>
-    <div class="insta-grid" id="instaPreviewGrid">
-      <div class="insta-tile insta-embed-tile">
-        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DZIiMQHmkGv/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:8px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:0;padding:0;width:100%"><div style="padding:16px;text-align:center"><a href="https://www.instagram.com/p/DZIiMQHmkGv/" target="_blank" style="color:#000;font-family:Arial,sans-serif;font-size:.9rem">View this post on Instagram</a></div></blockquote>
-      </div>
-      <div class="insta-tile"><img src="images/photo5.jpg" alt="Landscaping crew at work" loading="lazy"></div>
-      <div class="insta-tile"><img src="images/photo22.jpg" alt="Planting and mulching" loading="lazy"></div>
-      <div class="insta-tile"><img src="images/photo9.jpg" alt="Drainage installation" loading="lazy"></div>
+    <<div class="insta-single">
+      <blockquote class="instagram-media" data-instgrm-captioned
+        data-instgrm-permalink="https://www.instagram.com/p/DZIiMQHmkGv/?utm_source=ig_embed"
+        data-instgrm-version="14"
+        style="background:#FFF;border:0;border-radius:8px;box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15);margin:0;padding:0;width:100%">
+        <div style="padding:16px;text-align:center">
+          <a href="https://www.instagram.com/p/DZIiMQHmkGv/" target="_blank"
+            style="color:#000;font-family:Arial,sans-serif;font-size:.9rem">
+            View this post on Instagram
+          </a>
+        </div>
+      </blockquote>
     </div>
     <div class="insta-cta">
       <a href="https://www.instagram.com/ajstreeserv/" target="_blank" rel="noopener" class="insta-handle">
